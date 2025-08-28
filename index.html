@@ -1,229 +1,105 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="id">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Blog KKN 17 Siyono Wetan</title>
-  <style>
-    /* === GLOBAL STYLE === */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    body {
-      font-family: "Poppins", sans-serif;
-      background: #f5fff7;
-      color: #333;
-      line-height: 1.6;
-    }
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>UNISA KKN KELOMPOK 17 Siyono Wetan</title>
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <div id="header"></div>
 
-    header {
-      background: linear-gradient(90deg, #14532d, #166534, #15803d);
-      color: white;
-      padding: 1.5rem;
-      text-align: center;
-      border-bottom-left-radius: 30px;
-      border-bottom-right-radius: 30px;
-    }
-    header h1 {
-      font-size: 2rem;
-    }
-    header p {
-      font-size: 1rem;
-      margin-top: 0.5rem;
-    }
+        <div class="container">
+            <h2 style="color: #166534; text-align: center">Proker Kami</h2>
+            <div class="blog-grid" id="blogPosts"></div>
+        </div>
 
-    nav {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      margin: 1rem 0;
-      flex-wrap: wrap;
-    }
-    nav a {
-      text-decoration: none;
-      padding: 8px 16px;
-      background: #fff;
-      color: #166534;
-      border-radius: 20px;
-      transition: 0.3s;
-      font-weight: bold;
-      border: 1px solid #166534;
-    }
-    nav a:hover {
-      background: #166534;
-      color: #fff;
-    }
+        <div id="footer"></div>
 
-    .container {
-      max-width: 1100px;
-      margin: auto;
-      padding: 20px;
-    }
+        <script>
+            // load header
+            fetch("header.html")
+                .then((res) => res.text())
+                .then((data) => {
+                    document.getElementById("header").innerHTML = data;
+                    const script = document.createElement("script");
+                    script.src = "header.js";
+                    document.body.appendChild(script);
+                });
 
-    /* === BLOG CARDS === */
-    .blog-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px;
-      margin-top: 20px;
-    }
-    .card {
-      background: #fff;
-      border-radius: 20px;
-      overflow: hidden;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      transition: transform 0.3s;
-    }
-    .card:hover {
-      transform: translateY(-5px);
-    }
-    .card img {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-    }
-    .card-content {
-      padding: 15px;
-    }
-    .card-content h3 {
-      color: #166534;
-      margin-bottom: 10px;
-    }
-    .card-content p {
-      font-size: 0.9rem;
-      margin-bottom: 10px;
-    }
-    .btn {
-      display: inline-block;
-      padding: 8px 14px;
-      border: none;
-      border-radius: 15px;
-      background: #166534;
-      color: #fff;
-      font-size: 0.9rem;
-      text-decoration: none;
-      transition: 0.3s;
-    }
-    .btn:hover {
-      background: #22c55e;
-    }
+            // load footer
+            fetch("footer.html")
+                .then((res) => res.text())
+                .then(
+                    (data) =>
+                        (document.getElementById("footer").innerHTML = data),
+                );
 
-    /* === FOOTER === */
-    footer {
-      background: #14532d;
-      color: white;
-      text-align: center;
-      padding: 15px;
-      margin-top: 30px;
-      border-top-left-radius: 20px;
-      border-top-right-radius: 20px;
-    }
+            const posts = [
+                {
+                    title: "Edukasi PHBS",
+                    img: "./gallery/phbs-thumbnail.jpeg",
+                    desc: "Memberikan edukasi pentingnya cuci tangan dan pemilahan sampah yang tepat dan juga penggunaan jamban sehat.",
+                    link: "./blog/phbs.html",
+                },
+                {
+                    title: "Literasi Keuangan dan Pentingnya Menabung",
+                    img: "./gallery/literasi-keuangan-thumbnail.jpeg",
+                    desc: "Mengajarkan Pentingnya Menabung sebagai Bekal Masa Depan bagi Anak Sekolah Dasar.",
+                    link: "./blog/literasi-keuangan.html",
+                },
+                {
+                    title: "Posyandu Lansia",
+                    img: "./gallery/posyandu-lansia-thumbnail.jpeg",
+                    desc: "Melakukan senam hipertensi pada lansia untuk mencegah terjadinya hipertensi.",
+                    link: "./blog/posyandu.html",
+                },
+                {
+                    title: "Pelatihan Dasar Pemrograman",
+                    img: "./gallery/pelatihan-pemrograman-thumbnail.jpeg",
+                    desc: "Pengenalan Logika dan Algoritma bagi Siswa SMK Muhammadiyah 1 Playen.",
+                    link: "./blog/pelatihan-pemrograman.html",
+                },
+                {
+                    title: "Senam Postur Ceria",
+                    img: "./gallery/senam-postur-thumbnail.jpeg",
+                    desc: "Melakukan demonstrasi senam postur dalam mencegah skoliosis dan kifosis pada siswa sekolah dasar.",
+                    link: "./blog/senam-postur.html",
+                },
+                {
+                    title: "Literasi Gizi: Memilih Makanan yang Sehat",
+                    img: "./gallery/literasi-gizi-thumbnail.jpeg",
+                    desc: "Melakukan edukasi cara memilih makanan yang sehat.",
+                    link: "./blog/literasi-gizi.html",
+                },
+                {
+                    title: "Eco Art Totebag",
+                    img: "./gallery/eco-art-thumbnail.jpeg",
+                    desc: "Menumbuhkan Kreativitas Anak dalam Mengolah Alam menjadi Karya Seni Ramah Lingkungan.",
+                    link: "./blog/eco-art.html",
+                },
+                {
+                    title: "Do'a dan Motivasi Ibu Balita Mendidik Anak Dengan Iman dan Kasih Sayang",
+                    img: "./gallery/posyandu-balita-thumbnail.jpeg",
+                    desc: "Memberikan penyuluhan mengenai do'a dan motivasi mendidik anak dengan iman dan kasih sayang untuk di implementasikan dalam kehidupan sehari-hari.",
+                    link: "./blog/doa-motivasi.html",
+                },
+            ];
 
-    /* === RESPONSIVE === */
-    @media (max-width: 600px) {
-      header h1 {
-        font-size: 1.5rem;
-      }
-      nav {
-        gap: 10px;
-      }
-    }
-  </style>
-</head>
-<body>
-  <!-- HEADER -->
-  <header>
-    <h1>Blog KKN 17 Siyono Wetan</h1>
-    <p>Momen Seru & Proker Selama KKN</p>
-  </header>
-
-  <!-- NAVIGATION -->
-  <nav>
-    <a href="#">Proker</a>
-    <a href="#">Galeri</a>
-    <a href="#">Tentang Kami</a>
-  </nav>
-
-  <!-- BLOG CONTENT -->
-  <div class="container">
-    <h2 style="color:#166534; text-align:center;">Proker Kami</h2>
-    <div class="blog-grid" id="blogPosts">
-      <!-- Cards akan dimuat dengan JavaScript -->
-    </div>
-  </div>
-
-  <!-- FOOTER -->
-  <footer>
-    <p>&copy; 2025 Kelompok KKN 17 UNISA | Dibuat dengan ❤️</p>
-  </footer>
-
-  <script>
-    // Data dummy proker
-    const posts = [
-      {
-        title: "Edukasi PHBS",
-        img: "./gallery/800x600_Wallpaper_Blue_Sky.png",
-        desc: "Memberikan edukasi pentingnya cuci tangan dan pemilahan sampah yang tepat dan juga penggunaan jamban sehat."
-      },
-      {
-        title: "Senam Postur Ceria",
-        img: "./gallery/800x600_Wallpaper_Blue_Sky.png",
-        desc: "Melakukan demonstrasi senam postur dalam mencegah scoliosis pada siswa sekolah dasar."
-      },
-      {
-        title: "Do'a dan Motivasi Ibu Balita Mendidik Anak Dengan Iman dan Kasih Sayang",
-        img: "./gallery/800x600_Wallpaper_Blue_Sky.png",
-        desc: "Memberikan penyuluhan mengenai do'a dan motivasi mendidik anak dengan iman dan kasih sayang untuk di implementasikan dalam kehidupan sehari-hari."
-      },
-      {
-        title: "Literasi Gizi: Memilih Makanan yang Sehat",
-        img: "./gallery/800x600_Wallpaper_Blue_Sky.png",
-        desc: "Melakukan edukasi cara memilih makanan yang sehat."
-      },
-      {
-        title: "Posyandu Lansia",
-        img: "./gallery/800x600_Wallpaper_Blue_Sky.png",
-        desc: "Melakukan senam hipertensi pada lansia untuk mencegah terjadinya hipertensi."
-      },
-      {
-        title: "Eco Art Totebag",
-        img: "./gallery/800x600_Wallpaper_Blue_Sky.png",
-        desc: "Melakukan senam hipertensi pada lansia untuk mencegah terjadinya hipertensi."
-      },
-      {
-        title: "Pelatihan Dasar Pemrograman",
-        img: "./gallery/800x600_Wallpaper_Blue_Sky.png",
-        desc: "Melakukan senam hipertensi pada lansia untuk mencegah terjadinya hipertensi."
-      },
-      {
-        title: "Literasi Keuangan dan Pentingnya Menabung",
-        img: "./gallery/800x600_Wallpaper_Blue_Sky.png",
-        desc: "Melakukan senam hipertensi pada lansia untuk mencegah terjadinya hipertensi."
-      },
-      {
-        title: "Pengelolaan Masjid",
-        img: "./gallery/800x600_Wallpaper_Blue_Sky.png",
-        desc: "Melakukan senam hipertensi pada lansia untuk mencegah terjadinya hipertensi."
-      },
-    ];
-
-    // Render posts
-    const blogContainer = document.getElementById("blogPosts");
-    posts.forEach(post => {
-      const card = document.createElement("div");
-      card.className = "card";
-      card.innerHTML = `
+            const blogContainer = document.getElementById("blogPosts");
+            posts.forEach((post) => {
+                const card = document.createElement("div");
+                card.className = "card";
+                card.innerHTML = `
         <img src="${post.img}" alt="${post.title}">
         <div class="card-content">
           <h3>${post.title}</h3>
           <p>${post.desc}</p>
-          <a href="#" class="btn">Baca Selengkapnya</a>
+          <a href=${post.link} class="btn">Baca Selengkapnya</a>
         </div>
       `;
-      blogContainer.appendChild(card);
-    });
-  </script>
-</body>
+                blogContainer.appendChild(card);
+            });
+        </script>
+    </body>
 </html>

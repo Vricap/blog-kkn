@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="id">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Blog KKN - Mengajar di Sekolah Dasar</title>
+        <link rel="stylesheet" href="./style.css" />
+    </head>
+    <body>
+        <div id="header"></div>
+
+        <main class="about-container">
+            <!-- Group Photo -->
+            <section class="about-hero">
+                <img src="/gallery/group-photo.JPG" alt="Foto Kelompok KKN" />
+            </section>
+
+            <!-- Short About Text -->
+            <section class="about-text">
+                <h2>Tentang Kami</h2>
+                <p>
+                    Selamat datang di blog KKN 17 Siyono Wetan 2025 👋 Kami
+                    adalah Kelompok KKN 17 Universitas ‘Aisyiyah Yogyakarta
+                    Tahun 2025 yang bertugas di Padukuhan Siyono Wetan,
+                    Logandeng, Playen, Gunungkidul. Blog ini dibuat sebagai
+                    media informasi dan dokumentasi kegiatan kami selama
+                    melaksanakan Kuliah Kerja Nyata (KKN) Tematik.
+                </p>
+                <p>
+                    KKN ini merupakan salah satu bentuk pengabdian mahasiswa
+                    kepada masyarakat dengan mengusung semangat Tri Dharma
+                    Perguruan Tinggi: pendidikan, penelitian, dan pengabdian
+                    kepada masyarakat. Melalui kegiatan ini, kami berusaha:
+                    Berkontribusi dalam bidang kesehatan, lingkungan hidup, dan
+                    pemberdayaan masyarakat. Menyusun dan melaksanakan
+                    program-program kerja yang bermanfaat sesuai dengan
+                    kebutuhan warga. Menjalin hubungan baik dan berbagi
+                    pengetahuan bersama masyarakat Siyono Wetan.
+                </p>
+                <p>
+                    Kami berharap keberadaan KKN 17 Universitas ‘Aisyiyah
+                    Yogyakarta di Siyono Wetan dapat memberikan pengalaman
+                    berharga bagi mahasiswa serta manfaat nyata bagi masyarakat.
+                    Terima kasih sudah mengunjungi blog kami. Semoga informasi
+                    yang kami bagikan dapat memberikan inspirasi dan
+                    kebermanfaatan. Salam hangat, Kelompok KKN 17 Universitas
+                    ‘Aisyiyah Yogyakarta 2025
+                </p>
+            </section>
+
+            <!-- Social Media Links -->
+            <section class="about-social">
+                <h3>Ikuti Kami di Media Sosial</h3>
+                <div class="social-links">
+                    <a href="https://instagram.com" target="_blank">
+                        <img
+                            src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/instagram.svg"
+                            alt="Instagram"
+                        />
+                    </a>
+                    <a href="https://tiktok.com" target="_blank">
+                        <img
+                            src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/tiktok.svg"
+                            alt="TikTok"
+                        />
+                    </a>
+                    <a href="https://facebook.com" target="_blank">
+                        <img
+                            src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/facebook.svg"
+                            alt="Facebook"
+                        />
+                    </a>
+                </div>
+            </section>
+        </main>
+
+        <!-- FOOTER -->
+        <div id="footer"></div>
+    </body>
+    <script>
+        // load header
+        fetch("./header.html")
+            .then((res) => res.text())
+            .then((data) => {
+                document.getElementById("header").innerHTML = data;
+                const script = document.createElement("script");
+                script.src = "./header.js";
+                document.body.appendChild(script);
+            });
+
+        // load footer
+        fetch("./footer.html")
+            .then((res) => res.text())
+            .then(
+                (data) => (document.getElementById("footer").innerHTML = data),
+            );
+    </script>
+</html>
