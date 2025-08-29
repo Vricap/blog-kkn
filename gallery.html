@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="id">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Gallery</title>
+        <link rel="stylesheet" href="./style.css" />
+    </head>
+    <body>
+        <div id="header"></div>
+
+        <main class="gallery-container">
+            <h2>Galeri Kegiatan KKN</h2>
+
+            <div class="gallery-grid">
+                <img src="/gallery/galleries/1.jpeg" alt="" />
+                <img src="/gallery/galleries/2.jpeg" alt="" />
+                <img src="/gallery/galleries/3.jpeg" alt="" />
+                <img src="/gallery/galleries/4.jpeg" alt="" />
+                <img src="/gallery/galleries/5.jpeg" alt="" />
+                <img src="/gallery/galleries/6.jpeg" alt="" />
+                <img src="/gallery/galleries/7.jpeg" alt="" />
+                <img src="/gallery/galleries/8.jpeg" alt="" />
+                <img src="/gallery/galleries/13.jpeg" alt="" />
+                <img src="/gallery/galleries/14.jpeg" alt="" />
+                <img src="/gallery/galleries/15.jpeg" alt="" />
+                <img src="/gallery/galleries/16.jpeg" alt="" />
+                <img src="/gallery/galleries/21.jpeg" alt="" />
+                <img src="/gallery/galleries/22.jpeg" alt="" />
+                <img src="/gallery/galleries/23.jpeg" alt="" />
+                <img src="/gallery/galleries/25.jpeg" alt="" />
+                <img src="/gallery/galleries/26.jpeg" alt="" />
+                <img src="/gallery/galleries/11.jpeg" alt="" />
+                <img src="" alt="" />
+                <img src="" alt="" />
+                <img src="/gallery/galleries/17.jpeg" alt="" />
+                <img src="/gallery/galleries/18.jpeg" alt="" />
+                <img src="/gallery/galleries/19.jpeg" alt="" />
+                <img src="/gallery/galleries/20.jpeg" alt="" />
+                <img src="/gallery/galleries/24.jpeg" alt="" />
+                <img src="/gallery/galleries/9.jpeg" alt="" />
+                <img src="/gallery/galleries/10.jpeg" alt="" />
+                <img src="/gallery/galleries/12.jpeg" alt="" />
+            </div>
+
+            <div id="imgModal" class="modal">
+                <span class="close">&times;</span>
+                <img class="modal-content" id="modalImage" />
+                <div id="caption"></div>
+            </div>
+        </main>
+
+        <!-- FOOTER -->
+        <div id="footer"></div>
+    </body>
+    <script>
+        // Ambil elemen modal
+        const modal = document.getElementById("imgModal");
+        const modalImg = document.getElementById("modalImage");
+        const captionText = document.getElementById("caption");
+
+        // Ambil semua gambar
+        const images = document.querySelectorAll(".gallery-grid img");
+        images.forEach((img) => {
+            img.onclick = function () {
+                modal.style.display = "block";
+                modalImg.src = this.src;
+                captionText.innerHTML = this.alt;
+            };
+        });
+
+        // Tutup modal saat klik tombol X
+        const closeBtn = document.querySelector(".close");
+        closeBtn.onclick = function () {
+            modal.style.display = "none";
+        };
+
+        // load header
+        fetch("/header.html")
+            .then((res) => res.text())
+            .then((data) => {
+                document.getElementById("header").innerHTML = data;
+                const script = document.createElement("script");
+                script.src = "./header.js";
+                document.body.appendChild(script);
+            });
+
+        // load footer
+        fetch("/footer.html")
+            .then((res) => res.text())
+            .then(
+                (data) => (document.getElementById("footer").innerHTML = data),
+            );
+    </script>
+</html>
